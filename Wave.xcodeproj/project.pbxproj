@@ -41,9 +41,6 @@
 		8E58E63722AB819C00BB0B24 /* pass.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = pass.vs; sourceTree = "<group>"; };
 		8E58E63822AB821A00BB0B24 /* splat.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = splat.fs; sourceTree = "<group>"; };
 		8E58E63922AB833800BB0B24 /* draw.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = draw.fs; sourceTree = "<group>"; };
-		8E58E63A22AB8DE100BB0B24 /* advect.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = advect.fs; sourceTree = "<group>"; };
-		8E58E63C22AB9F8500BB0B24 /* advect.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = advect.vs; sourceTree = "<group>"; };
-		8E68ADDD22ACD6B300829C59 /* advect2.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = advect2.fs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,9 +86,6 @@
 				8E58E63822AB821A00BB0B24 /* splat.fs */,
 				8E58E63722AB819C00BB0B24 /* pass.vs */,
 				8E58E63922AB833800BB0B24 /* draw.fs */,
-				8E58E63C22AB9F8500BB0B24 /* advect.vs */,
-				8E58E63A22AB8DE100BB0B24 /* advect.fs */,
-				8E68ADDD22ACD6B300829C59 /* advect2.fs */,
 				8E58E63522AB819B00BB0B24 /* common.glsl */,
 			);
 			path = Wave;
@@ -285,6 +279,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CDS6RVS6JM;
+				GCC_OPTIMIZATION_LEVEL = s;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +295,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CDS6RVS6JM;
+				GCC_OPTIMIZATION_LEVEL = s;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
