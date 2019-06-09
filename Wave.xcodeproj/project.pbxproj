@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8E58E62022AB6F1400BB0B24 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E58E61F22AB6F1400BB0B24 /* main.cpp */; };
+		8E58E62A22AB6F8500BB0B24 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E58E62922AB6F8500BB0B24 /* OpenGL.framework */; };
+		8E58E62C22AB6F9000BB0B24 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E58E62B22AB6F9000BB0B24 /* libGLEW.2.1.0.dylib */; };
+		8E58E62E22AB6F9D00BB0B24 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E58E62D22AB6F9D00BB0B24 /* libglfw.3.3.dylib */; };
+		8E58E63122AB703400BB0B24 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E58E62F22AB703400BB0B24 /* World.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +29,21 @@
 /* Begin PBXFileReference section */
 		8E58E61C22AB6F1400BB0B24 /* Wave */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Wave; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E58E61F22AB6F1400BB0B24 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8E58E62622AB6F3700BB0B24 /* utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		8E58E62722AB6F4D00BB0B24 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		8E58E62922AB6F8500BB0B24 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		8E58E62B22AB6F9000BB0B24 /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../../../usr/local/Cellar/glew/2.1.0/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
+		8E58E62D22AB6F9D00BB0B24 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
+		8E58E62F22AB703400BB0B24 /* World.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
+		8E58E63022AB703400BB0B24 /* World.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = World.hpp; sourceTree = "<group>"; };
+		8E58E63522AB819B00BB0B24 /* common.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = common.glsl; sourceTree = "<group>"; };
+		8E58E63622AB819B00BB0B24 /* solver.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = solver.fs; sourceTree = "<group>"; };
+		8E58E63722AB819C00BB0B24 /* pass.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = pass.vs; sourceTree = "<group>"; };
+		8E58E63822AB821A00BB0B24 /* splat.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = splat.fs; sourceTree = "<group>"; };
+		8E58E63922AB833800BB0B24 /* draw.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = draw.fs; sourceTree = "<group>"; };
+		8E58E63A22AB8DE100BB0B24 /* advect.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = advect.fs; sourceTree = "<group>"; };
+		8E58E63C22AB9F8500BB0B24 /* advect.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = advect.vs; sourceTree = "<group>"; };
+		8E68ADDD22ACD6B300829C59 /* advect2.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = advect2.fs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +51,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E58E62E22AB6F9D00BB0B24 /* libglfw.3.3.dylib in Frameworks */,
+				8E58E62C22AB6F9000BB0B24 /* libGLEW.2.1.0.dylib in Frameworks */,
+				8E58E62A22AB6F8500BB0B24 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +65,7 @@
 			children = (
 				8E58E61E22AB6F1400BB0B24 /* Wave */,
 				8E58E61D22AB6F1400BB0B24 /* Products */,
+				8E58E62822AB6F8500BB0B24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,8 +81,30 @@
 			isa = PBXGroup;
 			children = (
 				8E58E61F22AB6F1400BB0B24 /* main.cpp */,
+				8E58E62F22AB703400BB0B24 /* World.cpp */,
+				8E58E63022AB703400BB0B24 /* World.hpp */,
+				8E58E62622AB6F3700BB0B24 /* utils.h */,
+				8E58E62722AB6F4D00BB0B24 /* common.h */,
+				8E58E63622AB819B00BB0B24 /* solver.fs */,
+				8E58E63822AB821A00BB0B24 /* splat.fs */,
+				8E58E63722AB819C00BB0B24 /* pass.vs */,
+				8E58E63922AB833800BB0B24 /* draw.fs */,
+				8E58E63C22AB9F8500BB0B24 /* advect.vs */,
+				8E58E63A22AB8DE100BB0B24 /* advect.fs */,
+				8E68ADDD22ACD6B300829C59 /* advect2.fs */,
+				8E58E63522AB819B00BB0B24 /* common.glsl */,
 			);
 			path = Wave;
+			sourceTree = "<group>";
+		};
+		8E58E62822AB6F8500BB0B24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E58E62D22AB6F9D00BB0B24 /* libglfw.3.3.dylib */,
+				8E58E62B22AB6F9000BB0B24 /* libGLEW.2.1.0.dylib */,
+				8E58E62922AB6F8500BB0B24 /* OpenGL.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E58E63122AB703400BB0B24 /* World.cpp in Sources */,
 				8E58E62022AB6F1400BB0B24 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,6 +285,12 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CDS6RVS6JM;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glew/2.1.0/lib,
+					/usr/local/Cellar/glfw/3.3/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -248,6 +300,12 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CDS6RVS6JM;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glew/2.1.0/lib,
+					/usr/local/Cellar/glfw/3.3/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
