@@ -23,6 +23,7 @@ class World
     glProgram solver;
     glProgram splatter;
     glProgram drawer;
+    glProgram setter;
     
     int width;
     int height;
@@ -34,10 +35,32 @@ class World
     
     int points;
     
+    void set(const vec2& p, float w, float h, float x, float y, float z, float rx, float ry, float rz) {
+        grid[0].bind();
+        grid[1].bind();
+        
+        setter.bind();
+        setter.uniform1i("T", grid[1].id);
+        setter.uniform2f("scl", w, h);
+        setter.uniform2f("offset", p.x, p.y);
+        setter.uniform3f("origin", x, y, z);
+        setter.uniform3f("value", rx, ry, rz);
+        
+        blit(grid[0].fbo);
+        
+        grid.swap();
+        
+        reset_texture_count;
+    }
+    
 public:
         
-    inline void clear() {
+    inline void reset() {
         grid.clear();
+    }
+    
+    inline void clear() {
+        set(vec2(0.0f, 0.0f), 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f);
     }
     
     void initialize(int w, int h) {
@@ -47,13 +70,14 @@ public:
         points = width * height;
         
         grid.initialize(GL_LINEAR);
-        grid.image(GL_RG32F, GL_RG, width, height, GL_FLOAT, 0);
+        grid.image(GL_RGB32F, GL_RGB, width, height, GL_FLOAT, 0);
         
-        clear();
+        reset();
         
         splatter.initialize_with_header("pass.vs", "splat.fs", "common.glsl");
         drawer.initialize_with_header("pass.vs", "draw.fs", "common.glsl");
         solver.initialize_with_header("pass.vs", "solver.fs", "common.glsl");
+        setter.initialize_with_header("set.vs", "set.fs", "common.glsl");
         
         glGenVertexArrays(1, vao);
         glGenBuffers(1, vbo);
@@ -69,12 +93,14 @@ public:
     }
     
     void destory() {
-        grid.destory();
-
-        destoryPrograms({&splatter, &drawer, &solver});
-        
+        destoryTextures({&grid});
+        destoryPrograms({&splatter, &drawer, &solver, &setter});
         glDeleteVertexArrays(2, vao);
         glDeleteBuffers(2, vbo);
+    }
+    
+    inline void set(const vec2& p, float w, float h, float m) {
+        set(p, w, h, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, m - 1.0f);
     }
     
     inline void blit(GLuint fbo, int x, int y, int w, int h) {
@@ -90,7 +116,7 @@ public:
         blit(fbo, 0, 0, width, height);
     }
     
-    void splat(const vec2& p, float power);
+    void splat(const vec2& p, float radius, float power);
     
     void step(float dt) {
         grid[0].bind();

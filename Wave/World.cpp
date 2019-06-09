@@ -20,13 +20,14 @@ void World::draw(GLuint target, const Frame& frame) {
     reset_texture_count;
 }
 
-void World::splat(const vec2& p, float power) {
+void World::splat(const vec2& p, float radius, float power) {
     grid[0].bind();
     grid[1].bind();
     
     splatter.bind();
     splatter.uniform1i("T", grid[1].id);
     splatter.uniform2f("p", (p.x * 0.5f + 0.5f) * width, (p.y * 0.5f + 0.5f) * height);
+    splatter.uniform1f("radius", radius);
     splatter.uniform1f("power", power);
     
     blit(grid[0].fbo);
