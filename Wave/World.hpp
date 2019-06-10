@@ -31,8 +31,6 @@ class World
     GLuint vao[1];
     GLuint vbo[1];
     
-    void solve();
-    
     int points;
     
     void set(const vec2& p, float w, float h, float x, float y, float z, float rx, float ry, float rz) {
@@ -99,8 +97,8 @@ public:
     void destory() {
         destoryTextures({&grid});
         destoryPrograms({&splatter, &drawer, &solver, &setter});
-        glDeleteVertexArrays(2, vao);
-        glDeleteBuffers(2, vbo);
+        glDeleteVertexArrays(1, vao);
+        glDeleteBuffers(1, vbo);
     }
     
     inline void set(const vec2& p, float w, float h, float m) {

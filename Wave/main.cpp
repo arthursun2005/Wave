@@ -80,7 +80,7 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
         }
         
         if(key == GLFW_KEY_P) {
-            splat(0.1f, 600000.0f);
+            splat(0.1f, FLT_MAX);
         }
         
         if(key == GLFW_KEY_R) {
@@ -93,6 +93,19 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
         
         if(key == GLFW_KEY_M) {
             world.clearMedium();
+        }
+        
+        float gap = 0.01f;
+        float off = 0.02f;
+        
+        if(key == GLFW_KEY_T) {
+            for(float x = -1.0f; x <= 1.0f; x += gap * 2.0f) {
+                world.set(vec2(x, off), gap * 0.25f, 1.0f, 0.0f);
+            }
+            
+            for(float x = -1.0f; x <= 1.0f; x += gap * 2.0f) {
+                world.set(vec2(x, -off), gap * 0.25f, 1.0f, 0.0f);
+            }
         }
     }
 }
