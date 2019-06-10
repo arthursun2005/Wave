@@ -63,6 +63,10 @@ public:
         set(vec2(0.0f, 0.0f), 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f);
     }
     
+    inline void clearMedium() {
+        set(vec2(0.0f, 0.0f), 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+    }
+    
     void initialize(int w, int h) {
         width = w;
         height = h;
@@ -101,6 +105,10 @@ public:
     
     inline void set(const vec2& p, float w, float h, float m) {
         set(p, w, h, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, m - 1.0f);
+    }
+    
+    inline void setLevel(const vec2& p, float w, float h, float e) {
+        set(p, w, h, 0.0f, 0.0f, 1.0f, e, 0.0f, 0.0f);
     }
     
     inline void blit(GLuint fbo, int x, int y, int w, int h) {

@@ -5,5 +5,5 @@ uniform vec2 invSize;
 
 void main() {
     vec3 m = texture(T, gl_FragCoord.xy * invSize).xyz;
-    C = m.x * vec4(0.05f, 0.01f, -0.1f + 0.001f * m.x, 0.0f) + (1.0f/(m.z + 1.0f)) * vec4(0.05f);
+    C = m.x * vec4(0.05f, 0.001f, -0.05f, 0.0f) + (1.0f/(m.z + 1.0f)) * vec4(0.05f);
 }

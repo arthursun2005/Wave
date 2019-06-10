@@ -66,10 +66,21 @@ inline void block(float m, float w, float h) {
     world.set(mouse, w, h, m);
 }
 
+inline void level(float e, float w, float h) {
+    vec2 mouse((mouseX * 2.0f - width), -(mouseY * 2.0f - height));
+    mouse.x *= 1.0f/(float)width;
+    mouse.y *= 1.0f/(float)height;
+    world.setLevel(mouse, w, h, e);
+}
+
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     if(action == GLFW_RELEASE) {
         if(key == GLFW_KEY_A) {
             splat(2000.0f, 1000.0f);
+        }
+        
+        if(key == GLFW_KEY_P) {
+            splat(0.1f, 600000.0f);
         }
         
         if(key == GLFW_KEY_R) {
@@ -78,6 +89,10 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
         
         if(key == GLFW_KEY_C) {
             world.clear();
+        }
+        
+        if(key == GLFW_KEY_M) {
+            world.clearMedium();
         }
     }
 }
@@ -163,11 +178,6 @@ int main(int argc, const char * argv[]) {
         }
 #endif
         
-        float freq = 10.0f;
-        if(glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS && (int(currentTime * freq)&0x1) == 0x1) {
-            splat(10.0f, 60.0f);
-        }
-        
         if(glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS) {
             block(0.0f, 0.02f, 0.02f);
         }
@@ -178,6 +188,14 @@ int main(int argc, const char * argv[]) {
         
         if(glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS) {
             block(0.5f, 0.05f, 0.05f);
+        }
+        
+        if(glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+            level(0.0f, 0.2f, 0.2f);
+        }
+        
+        if(glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS) {
+            block(0.1f, 0.05f, 0.05f);
         }
         
         if(press) {
@@ -193,7 +211,7 @@ int main(int argc, const char * argv[]) {
         frame.offset.x += dMouseX * 4.0f / frame.scl;
         frame.offset.y += dMouseY * 4.0f / frame.scl;
         
-        world.step(4.0f, 20);
+        world.step(10.0f, 20);
         
         world.draw(0, frame);
     
